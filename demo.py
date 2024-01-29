@@ -20,16 +20,20 @@ import mmcv
 
 ########################################################################################################################
 class Demo():
-    def __init__(self) -> None:
+    def __init__(self, root='./input', out='./output', mesh='./meshes', checkpoints='./checkpoints', type='pants',
+                 front=None, back=None) -> None:
         try:
-            self.get_args()
+            # 이전 get_args 함수의 내용을 여기로 이동
+            self._opt = argparse.Namespace(root=root, out=out, mesh=mesh, checkpoints=checkpoints, type=type,
+                                           front=front, back=back)
+
             self.get_dicts()
             self.get_path()
             self.get_kgdet()
         except Exception as exception:
             self.clear_tmp()
             raise exception
-        
+
         self._p_out.mkdir(exist_ok=True, parents=False)
     
     def get_args(self):
