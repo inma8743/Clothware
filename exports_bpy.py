@@ -4,12 +4,8 @@ import os
 def export_3d_path(product_idx):
     return os.path.join('./uploads/stylechain/product', '3d', product_idx)
 
-def export_img_path(product_idx):
-    return os.path.join('./uploads/stylechain/product', 'img', product_idx)
-
 def exports_3dModeling(product_idx):
     export_file_path = export_3d_path(product_idx)
-    load_img_path = export_img_path(product_idx)
     obj_file_path = os.path.join('./uploads/stylechain/product', product_idx, '3d', 'digital_TShirt.obj')
 
     # 기존에 불러온 모든 객체 제거
@@ -21,7 +17,7 @@ def exports_3dModeling(product_idx):
     bsdf = material.node_tree.nodes.get('Principled BSDF')
     if bsdf is not None:
         texImage = material.node_tree.nodes.new('ShaderNodeTexImage')
-        texImage.image = bpy.data.images.load(os.path.join(load_img_path, 'texture.png'))
+        texImage.image = bpy.data.images.load(os.path.join(export_file_path, 'texture.png'))
         material.node_tree.links.new(bsdf.inputs['Base Color'], texImage.outputs['Color'])
 
     # face OBJ 파일 불러오기
