@@ -1,6 +1,7 @@
 from flask import Flask, request, render_template, json, jsonify
 from flask_cors import CORS
 from demo import Demo
+import os
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 30 * 1024 * 1024
@@ -18,6 +19,8 @@ def index():
     back = request.form.get('back', None)
 
     out = './uploads/stylechain/product/3d/' + out
+
+    os.makedirs(out, exist_ok=True)
 
     # Demo 클래스에 매개변수 전달
     demo = Demo(root, out, mesh, checkpoints, garment_type, front, back)
