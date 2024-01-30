@@ -17,10 +17,16 @@ def index():
     front = request.form.get('front', None)
     back = request.form.get('back', None)
 
+    out = './uploads/stylechain/product/3d/' + out
+
     # Demo 클래스에 매개변수 전달
     demo = Demo(root, out, mesh, checkpoints, garment_type, front, back)
     demo.run()
     demo.clear_tmp()
+
+    return jsonify({
+        'result': 'true'
+    })
 
 if __name__ == "__main__":
     app.run("0.0.0.0")
