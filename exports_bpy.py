@@ -2,10 +2,10 @@ import bpy
 import os
 
 def export_3d_path(product_idx):
-    return os.path.join('./uploads/stylechain/product', product_idx, '3d')
+    return os.path.join('./uploads/stylechain/product', '3d', product_idx)
 
 def export_img_path(product_idx):
-    return os.path.join('./uploads/stylechain/product', product_idx, 'img')
+    return os.path.join('./uploads/stylechain/product', 'img', product_idx)
 
 def exports_3dModeling(product_idx):
     export_file_path = export_3d_path(product_idx)
