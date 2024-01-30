@@ -6,7 +6,7 @@ def export_3d_path(product_idx):
 
 def exports_3dModeling(product_idx):
     export_file_path = export_3d_path(product_idx)
-    obj_file_path = os.path.join('./uploads/stylechain/product', product_idx, '3d', 'digital_TShirt.obj')
+    obj_file_path = os.path.join('./uploads/stylechain/product', '3d', product_idx, 'digital_TShirt.obj')
 
     # 기존에 불러온 모든 객체 제거
     bpy.ops.object.select_all(action='SELECT')
