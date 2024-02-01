@@ -31,6 +31,8 @@ def exports_3dModeling(product_idx):
             else:
                 obj.data.materials[0] = material
 
+    bpy.ops.object.shade_smooth()
+
     bpy.ops.export_scene.fbx(filepath=os.path.join(export_file_path, f"{product_idx}.fbx"))
     bpy.ops.export_scene.gltf(filepath=os.path.join(export_file_path, f"{product_idx}.glb"), export_format="GLB")
 
