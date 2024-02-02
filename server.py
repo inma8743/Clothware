@@ -3,7 +3,7 @@ from flask_cors import CORS
 from demo import Demo
 import os
 
-import exports_bpy
+import subprocess
 
 app = Flask(__name__)
 app.config['MAX_CONTENT_LENGTH'] = 30 * 1024 * 1024
@@ -29,7 +29,9 @@ def index():
     demo.run()
     demo.clear_tmp()
 
-    exports_bpy.exports_3dModeling(out)
+    result = subprocess.check_output(
+        ["conda", "run", "-n", "f3", "python", "./services/processing_bpy_hrn.py", out],
+        universal_newlines=True)
 
     return jsonify({
         'result': 'true'
