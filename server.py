@@ -30,7 +30,7 @@ def index():
     demo.clear_tmp()
 
     result = subprocess.check_output(
-        ["conda", "run", "-n", "f3", "python", "./services/processing_bpy_hrn.py", out],
+        ["conda", "run", "-n", "f3", "python", "exports_bpy", out],
         universal_newlines=True)
 
     return jsonify({
