@@ -15,6 +15,10 @@ def exports_3dModeling(product_idx):
     # face OBJ 파일 불러오기
     bpy.ops.import_scene.obj(filepath=obj_file_path)
 
+    bpy.ops.object.select_all(action='SELECT')
+    # 불러온 객체에 쉐이드 스무스 적용
+    bpy.ops.object.shade_smooth()
+
     material = bpy.data.materials.new(name="default_mat")
     material.use_nodes = True
     bsdf = material.node_tree.nodes.get('Principled BSDF')
@@ -31,8 +35,7 @@ def exports_3dModeling(product_idx):
             else:
                 obj.data.materials[0] = material
 
-            # 불러온 객체에 쉐이드 스무스 적용
-            bpy.ops.object.shade_smooth()
+
 
     bpy.ops.export_scene.fbx(filepath=os.path.join(export_file_path, f"{product_idx}.fbx"))
     bpy.ops.export_scene.gltf(filepath=os.path.join(export_file_path, f"{product_idx}.glb"), export_format="GLB")
