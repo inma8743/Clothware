@@ -9,7 +9,8 @@ def exports_3dModeling(product_idx):
     obj_file_path = os.path.join('./uploads/stylechain/product', '3d', product_idx, 'digital_TShirt.obj')
 
     # 기존에 불러온 모든 객체 제거
-    bpy.ops.wm.read_factory_settings(use_empty=True)
+    bpy.ops.object.select_all(action='SELECT')
+    bpy.ops.object.delete()
 
     # Create a new material
     material = bpy.data.materials.new(name="default_mat")
