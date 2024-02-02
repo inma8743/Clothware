@@ -31,6 +31,7 @@ def exports_3dModeling(product_idx):
             else:
                 obj.data.materials[0] = material
 
+    bpy.ops.object.mode_set(mode='OBJECT')
     bpy.ops.object.select_all(action='SELECT')
     bpy.ops.object.shade_smooth()
 
