@@ -46,5 +46,7 @@ def exports_3dModeling(product_idx, garment_type):
     bpy.ops.export_scene.gltf(filepath=os.path.join(export_file_path, f"{product_idx}.glb"), export_format="GLB")
 
 product_idx = sys.argv[1]
-exports_3dModeling(product_idx)
+garment_type = sys.argv[2]
+
+exports_3dModeling(product_idx, garment_type)
 
