@@ -5,9 +5,11 @@ import sys
 def export_3d_path(product_idx):
     return os.path.join('./uploads/stylechain/product', '3d', product_idx)
 
-def exports_3dModeling(product_idx):
+def exports_3dModeling(product_idx, garment_type):
     export_file_path = export_3d_path(product_idx)
     obj_file_path = os.path.join('./uploads/stylechain/product', '3d', product_idx, 'digital_TShirt.obj')
+    if garment_type == 'pants':
+        obj_file_path = os.path.join('./uploads/stylechain/product', '3d', product_idx, 'digital_pants.obj')
 
     # 기존에 불러온 모든 객체 제거
     bpy.ops.object.select_all(action='SELECT')
