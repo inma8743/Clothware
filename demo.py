@@ -121,8 +121,13 @@ class Demo():
             for pts_dict in _pts_dicts:
                 p_image = self._p_kgdet_temp / pts_dict["file_name"]
                 assert p_image.is_file() and p_image.exists()
-                
-                side = self._side_dict[pts_dict["file_name"]]
+
+                try:
+                    side = self._side_dict[pts_dict["file_name"]]
+                except Exception as exception:
+                    self.clear_tmp()
+                    raise exception
+
                 processed_meta = utils.process_keypoints(pts_dict)
                 
                 # Validation of kgdet side prediction
