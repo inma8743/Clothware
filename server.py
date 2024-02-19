@@ -26,6 +26,7 @@ def index():
 
     # Demo 클래스에 매개변수 전달
     demo = Demo(root, outfile_path, mesh, checkpoints, garment_type, front, back)
+    demo.clear_tmp()
     demo.run()
     demo.clear_tmp()
 
